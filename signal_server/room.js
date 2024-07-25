@@ -37,7 +37,7 @@ const roomHandler = (socket) => {
         socket.on("disconnect", () => {
             console.log("user left the room", peerId);
             const user = rooms[roomId][peerId];
-            leaveRoom({ roomId, peerId, userName: user.userName });
+            leaveRoom({ roomId, peerId, userName: user ? user.userName : '' });
             if (sharingScreens[roomId] === peerId) {
                 sharingScreens[roomId] = null;
             }
